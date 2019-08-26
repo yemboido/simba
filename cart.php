@@ -55,7 +55,7 @@
 							</td>
 							<td class="column-5"><?php echo $donnees['prixT'] ; ?></td>
 							<td>
-								<?php echo $_POST['num-product'] ;?>
+								<?php// echo $_POST['num-product'] ;?>
 								
 								<a href="cart.php?$nb= and $id=<?php echo $donnees['id'] ; ?> ">Mettre a jour </a>
 							</td>

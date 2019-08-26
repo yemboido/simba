@@ -18,7 +18,9 @@ function getDifferentCategory()
 function getArticleByCategory($id)
 {
 	global $bdd;
-	$reponse=$bdd->query('SELECT * FROM article WHERE idCategorie=$id');
+	$req=$bdd->prepare('SELECT DISTINCT * FROM article WHERE article.idCategorie=:id ');
+	$req->execute(array('id' =>$id) );
+	return $req;
 }
 
 
@@ -54,9 +56,10 @@ function MakeCartTotal()
 	return $reponse;
 }
 function getArticleById($id)
-{
-	$reponse = $bdd->query('SELECT * FROM article WHERE id=$id');
-	return $reponse;
+{	global $bdd;
+	$req = $bdd->prepare('SELECT * FROM article WHERE id=:id');
+	$req->execute(array('id' =>$id));
+	return $req;
 }
 
 function updateCart($nb,$id)

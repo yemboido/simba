@@ -51,8 +51,9 @@
 
 					<!-- Product -->
 					<div class="row">
-						<?php 
-			$reponse=getAllArticle();
+						<?php $id=$_GET['id'];
+						
+			$reponse=getArticleByCategory($id);
 			while ($donnees = $reponse->fetch())
 			{ ?>
 						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
@@ -78,7 +79,7 @@
 								</div>
 
 								<div class="block2-txt p-t-20">
-									<a href="product-detail.php?id=<?php echo $donnees['id'];?>" class="block2-name dis-block s-text3 p-b-5">
+									<a href="product-detail.php?id=<?php echo $donnees['id']?>" class="block2-name dis-block s-text3 p-b-5">
 										<?php echo $donnees['nom'] ;?>
 									</a>
 

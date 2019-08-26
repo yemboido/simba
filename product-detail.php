@@ -4,7 +4,10 @@
 
  ?>
 	
-
+<?php 	$id=$_GET['id'];
+			$reponse=getArticleById($id);
+			while ($donnees = $reponse->fetch())
+			{ ?>
 	<!-- Product Detail -->
 	<div class="container bgwhite p-t-35 p-b-80">
 		<div class="flex-w flex-sb">
@@ -15,7 +18,19 @@
 					<div class="slick3">
 						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
 							<div class="wrap-pic-w">
-								<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+								<img src="images/<?php echo $donnees['image1'];?>" alt="IMG-PRODUCT">
+							</div>
+						</div>
+
+						<div class="item-slick3" data-thumb="images/<?php echo $donnees['image2'];?>">
+							<div class="wrap-pic-w">
+								<img src="images/<?php echo $donnees['image2'];?>" alt="IMG-PRODUCT">
+							</div>
+						</div>
+
+						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
+							<div class="wrap-pic-w">
+								<img src="<?php echo $donnees['image4'];?>" alt="IMG-PRODUCT">
 							</div>
 						</div>
 					</div>
@@ -24,34 +39,15 @@
 
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
-					Boxy T-Shirt with Roll Sleeve Detail
+					<?php echo $donnees['nom'] . '<br />';?>
 				</h4>
 
 				<span class="m-text17">
-					$22
+					<?php echo $donnees['prix'] . '<br />';?>
 				</span>
-
-				<p class="s-text8 p-t-10">
-					Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
-				</p>
 
 				<!--  -->
 				<div class="p-t-33 p-b-60">
-					<div class="flex-m flex-w p-b-10">
-						<div class="s-text15 w-size15 t-center">
-							Size
-						</div>
-
-						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-							<select class="selection-2" name="size">
-								<option>Choose an option</option>
-								<option>Size S</option>
-								<option>Size M</option>
-								<option>Size L</option>
-								<option>Size XL</option>
-							</select>
-						</div>
-					</div>
 
 					
 					<div class="flex-r-m flex-w p-t-10">
@@ -78,10 +74,7 @@
 					</div>
 				</div>
 
-				<div class="p-b-45">
-					<span class="s-text8 m-r-35">SKU: MUG-01</span>
-					<span class="s-text8">Categories: Mug, Design</span>
-				</div>
+	
 
 				<!--  -->
 				<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
@@ -93,12 +86,12 @@
 
 					<div class="dropdown-content dis-none p-t-15 p-b-23">
 						<p class="s-text8">
-							Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
+							<?php echo $donnees['description'] . '<br />';?>
 						</p>
 					</div>
 				</div>
 
-				<div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
+				<!--<div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
 					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
 						Additional information
 						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
@@ -110,9 +103,9 @@
 							Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
 						</p>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
+			<!--	<div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
 					<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
 						Reviews (0)
 						<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
@@ -123,13 +116,17 @@
 						<p class="s-text8">
 							Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat
 						</p>
-					</div>
+					</div> -->
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-
+<?php 
+							};
+						$reponse->closeCursor();
+							?>
 	<!-- Relate Product -->
 	<section class="relateproduct bgwhite p-t-45 p-b-138">
 		<div class="container">
